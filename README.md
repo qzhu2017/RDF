@@ -93,4 +93,4 @@ $ python XRD.py -c NaCl.cif
 ...
 ```
 It will also generate a png file with RDF plot as follows
-![FCC-Ar](https://github.com/qzhu2017/RDF/images/Ar.png)
+![FCC-Ar](https://github.com/qzhu2017/RDF/blob/master/images/Ar.png)
