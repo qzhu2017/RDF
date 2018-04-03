@@ -43,7 +43,7 @@ Options:
  ## execute 
  one just needs to run the followings,
 ```
-$ python XRD.py -c NaCl.cif
+$ python RDF.py -c POSCAR-Ar
 [[  8.00000000e-02   0.00000000e+00]
  [  1.60000000e-01   0.00000000e+00]
  [  2.40000000e-01   0.00000000e+00]
