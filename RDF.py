@@ -685,7 +685,7 @@ class RDF(object):
             r = (i+1)*dr
             self.RDF[i,0] = r
             self.RDF[i,1] = R[i]/(4*pi*dr*rho*r**2)
-        print(self.RDF)
+        #print(self.RDF)
         #print(R)
 
     def plot_RDF(self, filename=None):
