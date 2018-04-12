@@ -657,7 +657,7 @@ class RDF(object):
         self.R_bin = R_bin
         self.sigma = sigma
         self.compute_RDF(crystal)
-        self.plot_RDF()
+        #self.plot_RDF()
 
     def compute_RDF(self, crystal):
         R_max = self.R_max
