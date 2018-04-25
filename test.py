@@ -5,6 +5,9 @@ from pymatgen.core.structure import Structure
 from pymatgen.symmetry.analyzer import SpacegroupAnalyzer
 
 def convert(struc):
+    """
+    convert pymatgen struct class to our own struc class
+    """
 
     composition=[]
     atom_type = []

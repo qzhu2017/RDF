@@ -63,7 +63,7 @@ class RDF(object):
             dr = R_bin
             r = (i+1)*dr
             self.RDF[i,0] = r
-            self.RDF[i,1] = R[i]/(4*pi*dr*rho*r**2)
+            self.RDF[i,1] = R[i]/(4*pi*dr*rho*r**2)/len(crystal.frac_coords)
         #print(self.RDF)
         #print(R)
 
