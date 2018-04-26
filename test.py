@@ -1,34 +1,13 @@
 from RDF import *
-from aflow import *
-from math import pi
 from pymatgen.core.structure import Structure
-from pymatgen.symmetry.analyzer import SpacegroupAnalyzer
+import time
 
-def convert(struc):
-    """
-    convert pymatgen struct class to our own struc class
-    """
-
-    composition=[]
-    atom_type = []
-    dict = struc.composition.as_dict()
-
-    for ele in struc.composition.elements:
-        composition.append(int(dict[ele.name]))
-        atom_type.append(ele.name)
-
-    crystal0 = crystal(fileformat='poscar',
-        lattice= struc.lattice.matrix,
-        atom_type = atom_type,
-        composition = composition,
-        coordinate = struc.frac_coords)
-    return crystal0
-
-
+time0=time.time()
 struc = Structure.from_file("POSCAR-NaCl")
-rdf = RDF(convert(struc)).RDF
-print(rdf)
+rdf1 = RDF(struc).RDF
+print('Time Elasped (seconds):  ', time.time()-time0)
 
 struc.make_supercell([2, 2, 2])
-rdf = RDF(convert(struc)).RDF
-print(rdf)
+rdf2 = RDF(struc).RDF
+print('Time Elasped (seconds):  ', time.time()-time0)
+print('difference:           :  ', np.max(rdf1-rdf2))
