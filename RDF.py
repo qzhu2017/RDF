@@ -1,13 +1,10 @@
 from math import acos, pi, ceil
 from pymatgen.core.structure import Structure
+from pymatgen.symmetry.analyzer import SpacegroupAnalyzer
 from scipy.spatial.distance import cdist
 import numpy as np
 import matplotlib.pyplot as plt
 from scipy.ndimage.filters import gaussian_filter1d
-
-def angle(a,b):
-    """ calculate the angle between vector a and b """
-    return acos(np.dot(a,b)/np.linalg.norm(a)/np.linalg.norm(b))
 
 def smear(data, sigma):
     """
@@ -23,18 +20,30 @@ def smear(data, sigma):
 
 class RDF(object):
     """a class of crystal structure. 
-    Attributes:
+    Args:
         crystal: crystal class from pymatgen
+        symmetrize: symmetrize the structure before RDF computation
         R_max: maximum cutoff distance
         R_bin: length of each bin when computing the RDF 
-        width:
+        width: width of gaussian smearing
+    Attributes:
+        crystal
+        R_max
+        R_bin
+        width
+        RDF
+        plot_PDF()
     """
 
-    def __init__(self, crystal, R_max=12, R_bin=0.2, sigma=0.2):
+    def __init__(self, crystal, symmetrize=True, R_max=12, R_bin=0.2, sigma=0.2):
         """Return a RDF object with the proper info"""
         self.R_max = R_max
         self.R_bin = R_bin
         self.sigma = sigma
+        if symmetrize:
+            finder = SpacegroupAnalyzer(crystal,symprec=0.06,angle_tolerance=5)
+            crystal = finder.get_conventional_standard_structure()
+
         self.compute_RDF(crystal)
         #self.plot_RDF()
 
@@ -148,5 +157,7 @@ if __name__ == "__main__":
 
     plt.style.use(options.mstyle)
     test = Structure.from_file(options.structure)
-    RDF(test, R_max=options.Rmax, R_bin=options.delta, sigma=options.sigma)   
-    print(RDF(test, R_max=options.Rmax, R_bin=options.delta, sigma=options.sigma).RDF)
+    rdf = RDF(test, R_max=options.Rmax, R_bin=options.delta, sigma=options.sigma)   
+    print('-----RDF value-----')
+    print(rdf.RDF)
+    rdf.plot_RDF()
