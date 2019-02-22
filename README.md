@@ -1,13 +1,5 @@
 # RDF
-A code to compute the radial distribution function
-#edit
-This branch is initally planned for the undergraduate student's project on machine learning materials properties.
-
-Currently, there are four classes,
-- Element
-- crystal
-- cif
-- RDF
+A code to compute the radial distribution function. This branch is initally planned for the undergraduate student's project on machine learning materials properties.
 
 One could load the crystal from 
 - dictionary
@@ -29,7 +21,7 @@ $ bash Miniconda3-latest-Linux-x86_64.sh
 $ conda install -c matsci pymatgen
 ```
 
-## usage
+## Usage
 ```
 $ pythonw RDF.py -h
 Usage: RDF.py [options]
@@ -48,7 +40,7 @@ Options:
                         dark_background, ggplot
   -p PLOT, --plot=PLOT  generate the plot to file, default: None
  ```
- ## execution 
+ ## Execution 
  one just needs to run the followings,
 ```
 $ python RDF.py -c POSCAR-Ar
