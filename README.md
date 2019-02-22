@@ -2,7 +2,6 @@
 A code to compute the radial distribution function. This branch is initally planned for the undergraduate student's project on machine learning materials properties.
 
 One could load the crystal from 
-- dictionary
 - POSCAR
 - CIF file 
 
