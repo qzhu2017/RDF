@@ -23,11 +23,11 @@ To perform RDF calculation, one needs to provide the following info
 
 ## Requirement
 This code need the installation of Python3, scipy, numpy, pymatgen. The easiest way is to install them via anaconda or miniconda.
-
+```
 $ wget https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh
 $ bash Miniconda3-latest-Linux-x86_64.sh
 $ conda install -c matsci pymatgen
-
+```
 
 ## usage
 ```
